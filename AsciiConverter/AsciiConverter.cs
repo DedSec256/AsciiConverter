@@ -46,7 +46,7 @@ namespace AsciiConverter
 
         private char GetSymbolValue(byte value)
         {
-            char symbolValue = ' ';
+            char symbolValue = БЕЛЫЙ;
 
             if (value >= 230)
             {
