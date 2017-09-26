@@ -41,6 +41,7 @@ namespace AsciiConverter
                     sB.Append("\n");
                 }
                 AsciiText = sB.ToString();
+                Bmp.Dispose();
             });
         }
 
