@@ -28,7 +28,7 @@ namespace AsciiConverter
                 saveTextButton.Enabled = false;
                 string fileName = openFileDialog.FileName;
                 converter = new AsciiConverter((Bitmap) Image.FromFile(fileName));
-                await converter.ConvertToAscii();
+                await converter.ConvertToAsciiAsync();
                 MessageBox.Show($"Изображение было сконвертировано.\nНажмите \"Сохранить\"");
                 saveTextButton.Enabled = true;
             }
@@ -48,7 +48,7 @@ namespace AsciiConverter
                     }
                 }
                 MessageBox.Show($"Текст был уcпешно сохранён в\n{saveFileDialog.FileName}");
-                Process.Start(saveFileDialog.FileName);
+                Process.Start(saveFileDialog.FileName); //открываем файл с результатом
                 openImageButton.Enabled = true;
             }
         }

@@ -12,18 +12,33 @@ namespace AsciiConverter
 {
     class AsciiConverter
     {
+        /// <summary>
+        /// Получаем чёрно-белое значение пикселя
+        /// </summary>
+        /// <param name="color"> Цвет пикселя </param>
+        /// <returns></returns>
         private byte ColorAverager(Color color)
         {
             return (byte) ((color.R + color.G + color.B + color.A) / 4);
         }
 
+        /// <summary>
+        /// Экземпляр конвертируемого изображения
+        /// </summary>
         private readonly Bitmap Bmp;
 
+        /// <summary>
+        /// Текст, полученный конвертацией Bmp
+        /// </summary>
         public string AsciiText { get; private set; }
 
         public AsciiConverter(Bitmap bmp) => Bmp = bmp;
 
-        public Task ConvertToAscii()
+        /// <summary>
+        /// Асинхронное конвертирование
+        /// </summary>
+        /// <returns></returns>
+        public Task ConvertToAsciiAsync()
         {
             return Task.Run(() =>
             {
@@ -45,6 +60,11 @@ namespace AsciiConverter
             });
         }
 
+        /// <summary>
+        /// Получаем для каждого преобразованного пикселя соответсвующий ему тектовый символ
+        /// </summary>
+        /// <param name="value"> Чёрно-белое значние пикселя </param>
+        /// <returns> Соответсвующий символ </returns>
         private char GetSymbolValue(byte value)
         {
             char symbolValue = БЕЛЫЙ;
